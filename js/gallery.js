@@ -37,6 +37,24 @@ function swapPhoto() {
 	//Access the img element and replace its source
 	//with a new image from your images array which is loaded
 	//from the JSON string
+  if(mCurrentIndex[x] >= mImages.length) {
+    mCurrentIndex[x] = 0;
+  }
+  if(mCurrentIndex[x] < 0) {
+    mCurrentIndex = mImages.length + 1;
+  }
+
+  document.getElementById('photo');
+  var src[] = mImages;
+  var mCurrentIndex = mImages.img;
+
+  var location = "Location: " + mImages[mCurrentIndex].location;
+  var description = "Description: " + mImages[mCurrentIndex].description;
+  var date = "Date: " + mImages[mCurrentIndex].date;
+
+  var mLastFrameTime = 0;
+  mCurrentIndex += 1;
+
 	console.log('swap photo');
 }
 
@@ -67,9 +85,9 @@ function makeGalleryImageOnloadCallback(galleryImage) {
 }
 
 $(document).ready( function() {
-
+  fetchJSON.call();
 	// This initially hides the photos' metadata information
-	$('.details').eq(0).hide();
+	// $('.details').eq(0).hide(); //commented out to make sure metadata is loading
 
 });
 
@@ -84,15 +102,27 @@ function GalleryImage() {
 	var location; //1. location where photo was taken
 	var description; //2. description of photo
 	var date; //3. the date when the photo was taken
-	var path; //4. either a String (src URL) or an an HTMLImageObject (bitmap of the photo. https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement)
+	var path; //4. either a String (src URL) or an an HTMLImageObject (bitmap of the photo. https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement) // also called "img" in ex. code
 }
 
-function fetchJSON() {
+function fetchJSON() { //retrieves JSON information from JSON file
   mRequest.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
           var mJson = JSON.parse(this.responseText);
+          iterateJSON.call(mJson);
      }
   };
-  mRequest.open("GET", "mUrl", true);
+  mRequest.open("GET", mUrl, true);
   mRequest.send();
+}
+
+iterateJSON() {
+  for(x = 0; x < mJson.length; x++){
+    mImages[x] = new.GalleryImage();
+    GalleryImage.location = mJson.images[x].imgLocation;
+    GalleryImage.description = mJson.images[x].imgDescription;
+    GalleryImage.date = mJson.images[x].imgDate;
+    GalleryImage.path = mJson.images[x].imgPath;
+  }
+
 }
