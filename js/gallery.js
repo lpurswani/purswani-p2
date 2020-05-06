@@ -33,28 +33,32 @@ function animate() {
 /************* DO NOT TOUCH CODE ABOVE THIS LINE ***************/
 
 function swapPhoto() {
-	//Add code here to access the #slideShow element.
+
+  if(mCurrentIndex >= mImages.length) {
+    mCurrentIndex = 0;
+  }
+
+  if(mCurrentIndex < 0) {
+    mCurrentIndex = mImages.length - 1;
+  }
+
+  document.getElementById('photo').src = mImages[mCurrentIndex].img;
+
+  var loc = document.getElementByClassName('location');
+  loc[0].innerHTML = "Location: " + mImages[mCurrentIndex].location;
+
+  var des = document.getElementByClassName('description');
+  des[0].innerHTML = "Description: " + mImages[mCurrentIndex].description;
+
+  var dt = document.getElementByClassName('date');
+  dt[0].innerHTML = "Date: " + mImages[mCurrentIndex].date;
+
+  mLastFrameTime = 0;
+  mCurrentIndex += 1;
+  //Add code here to access the #slideShow element.
 	//Access the img element and replace its source
 	//with a new image from your images array which is loaded
 	//from the JSON string
-  if(mCurrentIndex[x] >= mImages.length) {
-    mCurrentIndex[x] = 0;
-  }
-  if(mCurrentIndex[x] < 0) {
-    mCurrentIndex = mImages.length + 1;
-  }
-
-  document.getElementById('photo');
-  var src[] = mImages;
-  var mCurrentIndex = mImages.img;
-
-  var location = "Location: " + mImages[mCurrentIndex].location;
-  var description = "Description: " + mImages[mCurrentIndex].description;
-  var date = "Date: " + mImages[mCurrentIndex].date;
-
-  var mLastFrameTime = 0;
-  mCurrentIndex += 1;
-
 	console.log('swap photo');
 }
 
@@ -85,7 +89,9 @@ function makeGalleryImageOnloadCallback(galleryImage) {
 }
 
 $(document).ready( function() {
+
   fetchJSON.call();
+
 	// This initially hides the photos' metadata information
 	// $('.details').eq(0).hide(); //commented out to make sure metadata is loading
 
@@ -108,7 +114,7 @@ function GalleryImage() {
 function fetchJSON() { //retrieves JSON information from JSON file
   mRequest.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-          var mJson = JSON.parse(this.responseText);
+          var mJson = JSON.parse(mRequest.responseText);
           iterateJSON.call(mJson);
      }
   };
@@ -117,12 +123,12 @@ function fetchJSON() { //retrieves JSON information from JSON file
 }
 
 iterateJSON() {
-  for(x = 0; x < mJson.length; x++){
-    mImages[x] = new.GalleryImage();
-    GalleryImage.location = mJson.images[x].imgLocation;
-    GalleryImage.description = mJson.images[x].imgDescription;
-    GalleryImage.date = mJson.images[x].imgDate;
-    GalleryImage.path = mJson.images[x].imgPath;
+  for(x = 0; x < mJson.images.length; x++){
+    mImages[x] = new GalleryImage();
+    mImages[x].location = mJson.images[x].imgLocation;
+    mImages[x].description = mJson.images[x].imgDescription;
+    mImages[x].date = mJson.images[x].imgDate;
+    mImages[x].path = mJson.images[x].imgPath;
   }
 
 }
