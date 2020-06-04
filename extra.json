@@ -1,0 +1,40 @@
+{
+    "images": [
+        {
+            "imgPath": "img/places/london_uk.jpg",
+            "imgLocation": "England",
+            "description": "Palace of Westminster",
+            "date": "04/15/2016"
+        },
+        {
+            "imgPath": "img/places/berlin_germany.jpg",
+            "imgLocation": "Germany",
+            "description": "Berlin Cathedral",
+            "date": "02/04/2018"
+        },
+        {
+            "imgPath": "img/places/chefchaouen_morocco.jpg",
+            "imgLocation": "Morocco",
+            "description": "Blue City of Chefchaouen",
+            "date": "04/10/2020"
+        },
+        {
+            "imgPath": "img/places/meteora_greece.jpg",
+            "imgLocation": "Greece",
+            "description": "Monasteries of Meteora",
+            "date": "04/25/2019"
+        },
+        {
+            "imgPath": "img/places/moscow_russia.jpg",
+            "imgLocation": "Russia",
+            "description": "St. Basil's Cathedral",
+            "date": "07/06/2021"
+        },
+        {
+            "imgPath": "img/places/grandcanyon_usa.jpg",
+            "imgLocation": "United States of America",
+            "description": "Grand Canyon",
+            "date": "11/02/2014"
+        }
+  ]
+}
