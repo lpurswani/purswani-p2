@@ -90,10 +90,10 @@ function makeGalleryImageOnloadCallback(galleryImage) {
 
 $(document).ready( function() {
 
-  fetchJSON.call();
+  fetchJSON();
 
 	// This initially hides the photos' metadata information
-	// $('.details').eq(0).hide(); //commented out to make sure metadata is loading
+	// $('.details').eq(0).hide();   //<<commented out to make sure metadata is loading
 
 });
 
@@ -114,16 +114,18 @@ function GalleryImage() {
 function fetchJSON() { //retrieves JSON information from JSON file
   mRequest.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-          var mJson = JSON.parse(mRequest.responseText);
-          iterateJSON.call(mJson);
+          mJson = JSON.parse(mRequest.responseText);
+          iterateJSON(mJson);
      }
-  };
+  }
   mRequest.open("GET", mUrl, true);
   mRequest.send();
 }
 
-iterateJSON() {
-  for(x = 0; x < mJson.images.length; x++){
+function iterateJSON(mJson) {
+
+  for(x = 0; x < mJson.images.length; x++)
+  {
     mImages[x] = new GalleryImage();
     mImages[x].location = mJson.images[x].imgLocation;
     mImages[x].description = mJson.images[x].imgDescription;
