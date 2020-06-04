@@ -103,6 +103,21 @@ window.addEventListener('load', function() {
 
 }, false);
 
+//onclick for toggleDetails
+$(document).ready(function)(){
+  toggleDetails();
+});
+
+//swapPhoto for the nextPhoto
+$("#nextPhoto").click(function(){
+  swapPhoto();
+});
+
+//explains swapPhoto for the id nextPhoto
+$("#prevPhoto").click(function(){
+  swapPhoto();
+});
+
 function GalleryImage() {
 	//implement me as an object to hold the following data about an image:
 	var location; //1. location where photo was taken
@@ -127,6 +142,7 @@ function iterateJSON(mJson) {
   for(x = 0; x < mJson.images.length; x++)
   {
     mImages[x] = new GalleryImage();
+
     mImages[x].location = mJson.images[x].imgLocation;
     mImages[x].description = mJson.images[x].imgDescription;
     mImages[x].date = mJson.images[x].imgDate;
