@@ -21,7 +21,7 @@ body {
 .photoHolder {
 	position: relative;
 	width: 80%;
-	margin: auto;
+	margin: 0 auto;
 }
 
 .moreIndicator {
@@ -41,11 +41,11 @@ body {
 .thumbnail {
 	position: relative;
 	box-shadow: 1px 3px 20px 0px;
-	/* margin:auto;
+	margin:auto;
 	top:auto;
-	left: 10%;
-	right:0;
-	width: inherit; */
+	/* left: 10%;
+	right:0; */
+	width: inherit;
 }
 
 
