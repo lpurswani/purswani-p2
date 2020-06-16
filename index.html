@@ -12,10 +12,11 @@
   <div id="photoBooth">
     <p class="banner">IS219 Slide Show</p>
     <div id="slideShow">
-			<div class="photoHolder">
-				<img class="thumbnail" id="photo" src="img/places/australia.jpg" alt="Gallery Image">
-				<img class="moreIndicator rot90" src="img/more.png" alt="More Content" onclick="toggleDetails()">
+      <div class="photoHolder">
+        <img class="thumbnail" id="photo" src="http://placehold.it/518x389?text=Welcome+to+my+Gallery" alt="Gallery Image"/>
+				<img class="moreIndicator rot90" src="img/more.png" alt="More Content" onclick="toggleDetails()"/>
 			</div>
+
       <div id="nav">
         <img id="prevPhoto" class='rot180' src="img/arrow.png" alt="Previous Photo"/>
         <img id="nextPhoto" src="img/arrow.png" alt="Next Photo"/>
@@ -28,9 +29,16 @@
 
     </div>
   </div>
-
-	<div class="menu-item">
-		<p>this is bullshit</p>
-	</div>
+	<script>
+	$( "#prevPhoto" ).click(function() {
+		mCurrentIndex-=2;
+		swapPhoto();
+	});
+	</script>
+	<script>
+	$( "#nextPhoto" ).click(function() {
+		swapPhoto();
+	});
+	</script>
 </body>
 </html>
